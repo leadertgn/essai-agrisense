@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>AGRISENSE</h1>
+    <h2>Connexion</h2>
+    <form id="login-form">
+        <p>Connectez-vous ici </p>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Entrez votre email ...">
+        </div>
+        <div>
+            <label for="password">Mot de passe</label>
+            <input type="password"  id="password" placeholder="Entrez votre mot de passe ...">
+        </div>
+        <div>
+            <button type="submit" id="login-btn">Se connecter</button>
+        </div>
+    </form>
+    <footer>
+        <p>
+            &copy; @AGRISENSE Tous droits réservés.
+        </p>
+    </footer>
+    <!-- Ordre important des scripts -->
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+
+<!-- Configuration + Initialisation -->
+<script src="scripts/firebaseConfig.js"></script>
+<script src="scripts/authState.js"></script>
+
+<!-- Code métier -->
+<script src="scripts/login.js"></script>
+
+</body>
+</html>

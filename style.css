@@ -1,0 +1,61 @@
+/* Reset de base */
+/**{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}*/
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+h1, footer {
+    text-align: center;
+}
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:1rem;   
+}
+div > p {
+    text-align: center;
+}
+section#dashboard {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "infos"
+    "actions"
+    "parameters";
+}
+#infos-cultures {
+    grid-area:infos;
+}
+#action-electrovanne {
+    grid-area: actions;
+}
+#parameters-values{
+    grid-area: parameters;
+}
+.containers-dashboard {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+}
+#charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* responsive */
+  gap: 1.5rem;
+}
+
+.chart {
+    border: 1px solid #ccc;
+}
+/*
+  background: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);

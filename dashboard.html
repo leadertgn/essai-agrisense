@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essai Agrisense</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>AGRISENSE</h1>
+        <nav>
+            <ul>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#stats">Statistiques</a></li>
+                <li><button onclick="signOutUser()">Déconnexion</button></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="dashboard">
+            <div id="infos-cultures" class="containers-dashboard">
+                <p>Culture<br><span id="nom-culture">---</span></p>
+                <p>Capteur d'humidité<br><span id="capteur-hum-name">---</span></p>
+                <p>Electrovanne<br><span id="electrovanne-name">---</span></p>
+            </div>
+            <div id="action-electrovanne" class="containers-dashboard">
+                <button id="btn-electrovanne">Electrovanne : <span id="electrovanne-state">OFF</span></button>
+            </div>
+            <div id="parameters-values" class="containers-dashboard">
+                <p>Humidité de l'air<br><span id="hum-air">---</span> %</p>
+                <p>Température de l'air<br> <span id="temp-air">---</span> °C</p>
+                <p>Humidité du sol<br><span id="hum-sol">---</span> %</p>
+            </div>
+        </section>
+        <section id="stats">
+            <h2>Statistiques</h2>
+            <div id="charts">
+                <div class="chart tempAirChart">
+                    <canvas id="temp-air-chart"></canvas>
+                </div>
+                <div class="chart humAirChart">
+                    <canvas id="hum-air-chart"></canvas>
+                </div>
+                <div class="chart humSoilChart">
+                    <canvas id="hum-soil-chart"></canvas>
+                </div>
+            </div>
+        </section>       
+    </main>
+    <footer>
+        <p>&copy; Agrisense 2025 Tous droits réservés</p>
+    </footer>
+        <!-- Ordre important des scripts -->
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+
+<!-- Configuration + Initialisation -->
+<script src="scripts/firebaseConfig.js"></script>
+<script src="scripts/authState.js"></script>
+
+<script src="scripts/logout.js"></script>
+<script src="scripts/script.js"></script>
+
+</body>
+</html>
