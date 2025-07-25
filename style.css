@@ -1,61 +1,440 @@
-/* Reset de base */
-/**{
+/* ==========================================================================
+   Variables CSS globales pour le projet Agrisense
+   ========================================================================== */
+:root {
+    --primary-color: #4CAF50; /* Vert agrégatif (similaire à la couleur de la nature) */
+    --secondary-color: #2196F3; /* Bleu pour les accents, boutons secondaires ou liens */
+    --background-color: #f4f7f6; /* Arrière-plan clair et doux */
+    --text-color: #333; /* Texte sombre principal pour une bonne lisibilité */
+    --light-text-color: #777; /* Texte plus léger pour les descriptions ou notes */
+    --card-background: #ffffff; /* Fond des conteneurs, cartes et formulaires */
+    --border-color: #ddd; /* Couleur de bordure générale pour les éléments */
+    --font-family-sans: 'Roboto', sans-serif; /* Police moderne et lisible pour le corps du texte */
+    --font-family-serif: 'Merriweather', serif; /* Police plus stylée pour les titres */
+}
+
+/* ==========================================================================
+   Importation des polices Google Fonts
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:wght@300;400;700&display=swap');
+
+/* ==========================================================================
+   Styles généraux du corps (appliqués à toutes les pages)
+   ========================================================================== */
+body {
+    font-family: var(--font-family-sans);
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}*/
-li {
-    list-style: none;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex; /* Utilisation de flexbox pour gérer le layout des pages */
+    flex-direction: column;
+    min-height: 100vh; /* S'assure que le corps prend toute la hauteur de la fenêtre */
+    text-align: center; /* Centre le texte pour les éléments non block (par défaut) */
 }
+
+/* Réinitialisation du style de liens */
 a {
+    color: var(--secondary-color);
     text-decoration: none;
+    transition: color 0.3s ease;
 }
-h1, footer {
-    text-align: center;
+
+a:hover {
+    color: #1976D2; /* Un bleu plus foncé au survol */
 }
-nav ul {
+
+/* ==========================================================================
+   Styles des titres (appliqués à toutes les pages)
+   ========================================================================== */
+h1 {
+    font-family: var(--font-family-serif);
+    color: var(--primary-color);
+    font-size: 3rem; /* Plus grand pour le titre principal */
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+h2 {
+    font-family: var(--font-family-sans);
+    color: var(--text-color);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* Ligne décorative sous les h2 pour la section statistiques */
+#stats h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+
+/* ==========================================================================
+   Styles de l'en-tête (spécifique à la page principale)
+   ========================================================================== */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap:1rem;   
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-div > p {
-    text-align: center;
+
+header h1 { /* Surcharge de h1 pour l'en-tête */
+    margin: 0;
+    font-family: var(--font-family-serif);
+    font-size: 2.2rem;
+    color: white; /* Titre blanc dans l'en-tête */
 }
-section#dashboard {
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+header nav ul li a:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+header button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+header button:hover {
+    background-color: #1976D2;
+}
+
+/* ==========================================================================
+   Styles du contenu principal (spécifique à la page principale)
+   ========================================================================== */
+main {
+    flex: 1; /* Permet au main de prendre l'espace restant */
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    text-align: left; /* Rétablir l'alignement pour le contenu principal */
+}
+
+section {
+    margin-bottom: 3rem;
+}
+
+/* ==========================================================================
+   Styles du tableau de bord
+   ========================================================================== */
+#dashboard {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: 
-    "infos"
-    "actions"
-    "parameters";
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-content: center;
 }
-#infos-cultures {
-    grid-area:infos;
-}
-#action-electrovanne {
-    grid-area: actions;
-}
-#parameters-values{
-    grid-area: parameters;
-}
+
 .containers-dashboard {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 1rem;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
 }
+
+.containers-dashboard:hover {
+    transform: translateY(-5px);
+}
+
+.containers-dashboard p {
+    margin: 0.5rem 0;
+    color: var(--light-text-color);
+    font-size: 1rem;
+}
+
+.containers-dashboard p span {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 0.5rem;
+}
+
+#action-electrovanne button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+#action-electrovanne button:hover {
+    background-color: #43A047;
+    transform: translateY(-2px);
+}
+
+#action-electrovanne button:active {
+    transform: translateY(0);
+}
+
+#action-electrovanne button span {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 2rem;
+}
+
+/* ==========================================================================
+   Styles des statistiques (graphiques)
+   ========================================================================== */
 #charts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* responsive */
-  gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
 }
 
 .chart {
-    border: 1px solid #ccc;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
 }
-/*
-  background: #f4f4f4;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+.chart:hover {
+    transform: translateY(-5px);
+}
+
+canvas {
+    max-width: 100%;
+    height: 250px;
+}
+
+/* ==========================================================================
+   Styles du pied de page (spécifique à la page principale)
+   ========================================================================== */
+footer {
+    background-color: var(--text-color);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+}
+
+
+/* ==========================================================================
+   Styles spécifiques à la page de connexion
+   ========================================================================== */
+/* Le body de la page de connexion doit être centré globalement */
+/* Si la page de connexion n'a pas de header ni footer, ces styles s'appliqueront */
+/* directement si le body est le conteneur principal du formulaire. */
+body.login-page { /* Ajoutez cette classe au body de votre page de connexion */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* Pour la page de connexion, les titres h1 et h2 seront centrés par le body.login-page */
+body.login-page h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+body.login-page h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    /* Supprimer la ligne sous le h2 spécifique à la page de connexion si elle n'est pas voulue */
+    padding-bottom: 0;
+}
+
+body.login-page h2::after {
+    content: none; /* Supprime la ligne décorative sous le h2 de la page de connexion */
+}
+
+#login-form {
+    background-color: var(--card-background);
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center; /* Centrer le contenu du formulaire */
+}
+
+#login-form p {
+    color: var(--light-text-color);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+#login-form div {
+    text-align: left; /* Aligne le texte des labels à gauche à l'intérieur du div */
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+button[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 700;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 1rem;
+}
+
+button[type="submit"]:hover {
+    background-color: #43A047;
+    transform: translateY(-2px);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   Media Queries pour la responsivité (appliquées à toutes les pages)
+   ========================================================================== */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    main {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    #dashboard, #charts {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.2rem; /* Légèrement plus petit pour les écrans très petits */
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header nav ul li a, header button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .containers-dashboard p span {
+        font-size: 1.5rem;
+    }
+
+    #action-electrovanne button {
+        padding: 1rem 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    #action-electrovanne button span {
+        font-size: 1.8rem;
+    }
+
+    /* Styles spécifiques pour la page de connexion sur mobile */
+    #login-form {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+        padding: 0.7rem 0.9rem;
+        font-size: 0.9rem;
+    }
+
+    button[type="submit"] {
+        padding: 0.8rem 1.2rem;
+        font-size: 1rem;
+    }
+}
